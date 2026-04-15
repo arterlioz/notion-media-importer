@@ -24,8 +24,6 @@ The extension works with a specific Notion database structure. You can duplicate
 
 ![tracker](assets/screenshot-tracker.png)
 
-**[→ Duplicate the Notion template](https://pattern-bubble-b1c.notion.site/template-0e37a73dfb8982b7b2ad8113edc60eba?source=copy_link)**
-
 Your database will have these properties:
 
 | Property | Type | What it stores |

@@ -216,6 +216,11 @@
         #mainSection.hidden {
             display: none;
         }
+
+        textarea::-webkit-scrollbar {
+        display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -313,7 +318,6 @@
 
             <button class="primary-button" id="importBtn">
                 <span id="btnText">Add to Notion</span>
-                <span>✈️</span>
             </button>
 
             <div id="status" class="status"></div>
