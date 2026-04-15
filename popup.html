@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 500px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #37352f;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid #e9e9e7;
+            background: #ffffff;
+        }
+
+        .header-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+
+        .header-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .settings-icon {
+            margin-left: auto;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 4px;
+            color: #787774;
+        }
+
+        .settings-icon:hover {
+            background: #f7f6f3;
+        }
+
+        .content {
+            padding: 24px 20px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field-label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #787774;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            background: #ffffff;
+            border: 1px solid #e9e9e7;
+            border-radius: 6px;
+            color: #37352f;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2383e2;
+            box-shadow: 0 0 0 2px rgba(35, 131, 226, 0.1);
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #a6a5a2;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            line-height: 1.5;
+        }
+
+        .primary-button {
+            width: 100%;
+            padding: 12px;
+            background: #000000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .primary-button:hover:not(:disabled) {
+            background: #2c2c2c;
+        }
+
+        .primary-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .analyze-button {
+            background: #ffffff;
+            color: #37352f;
+            border: 1px solid #e9e9e7;
+            font-size: 13px;
+            padding: 8px 12px;
+            margin-top: 8px;
+        }
+
+        .analyze-button:hover:not(:disabled) {
+            background: #f7f6f3;
+        }
+
+        .status {
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .status.visible {
+            display: block;
+        }
+
+        .status.success {
+            background: #edf7ed;
+            color: #2d6a2d;
+        }
+
+        .status.error {
+            background: #fdecea;
+            color: #d32f2f;
+        }
+
+        .status.info {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .setup-view {
+            padding: 24px 20px;
+        }
+
+        .setup-header {
+            margin-bottom: 24px;
+        }
+
+        .setup-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .setup-subtitle {
+            font-size: 14px;
+            color: #787774;
+        }
+
+        .setup-link {
+            color: #2383e2;
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        .setup-link:hover {
+            text-decoration: underline;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #e9e9e7;
+            border-top-color: #000000;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        #setupSection {
+            display: none;
+        }
+
+        #setupSection.visible {
+            display: block;
+        }
+
+        #mainSection.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Setup View -->
+    <div id="setupSection">
+        <div class="header">
+            <img src="icon48.png" class="header-icon" alt="Notion Media Tracker">
+            <div class="header-title">Notion Media Tracker</div>
+        </div>
+        
+        <div class="setup-view">
+            <div class="setup-header">
+                <div class="setup-title">Setup</div>
+                <div class="setup-subtitle">One-time configuration</div>
+            </div>
+
+            <div class="field">
+                <div class="field-label">
+                    Notion Integration Token
+                </div>
+                <input type="password" id="setupToken" placeholder="ntn_xxx or secret_xxx">
+            </div>
+
+            <div class="field">
+                <div class="field-label">
+                    Notion Database ID
+                </div>
+                <input type="text" id="setupDbId" placeholder="Paste your database ID here">
+            </div>
+
+            <button class="primary-button" id="saveSetupBtn">
+                Save & Continue
+            </button>
+            
+            <a href="https://www.notion.so/my-integrations" target="_blank" class="setup-link">
+                → Create Notion integration
+            </a>
+        </div>
+    </div>
+
+    <!-- Main View -->
+    <div id="mainSection">
+        <div class="header">
+            <img src="icon48.png" class="header-icon" alt="Notion Media Tracker">
+            <div class="header-title">Notion Media Tracker</div>
+            <div class="settings-icon" id="showSettingsLink">⚙️</div>
+        </div>
+
+        <div class="content">
+            <div class="field">
+                <div class="field-label">
+                    Title
+                </div>
+                <input type="text" id="title" placeholder="Auto-detected from page">
+            </div>
+
+            <div class="field">
+                <div class="field-label">
+                    <span id="authorLabel">Author</span>
+                </div>
+                <input type="text" id="author" placeholder="Auto-detected if available">
+            </div>
+
+            <div class="field">
+                <div class="field-label">
+                    Media Type
+                </div>
+                <select id="type">
+                    <option value="Essay 📄">Essay 📄</option>
+                    <option value="Article 📑">Article 📑</option>
+                    <option value="Guide 📝">Guide 📝</option>
+                    <option value="Podcast 🎙️">Podcast 🎙️</option>
+                    <option value="Video 🎥">Video 🎥</option>
+                    <option value="Book 📖">Book 📖</option>
+                    <option value="Movie & Show 🎬">Movie & Show 🎬</option>
+                </select>
+            </div>
+
+            <div class="field" style="display: none;">
+                <div class="field-label">
+                    Notion Database ID
+                </div>
+                <input type="text" id="dbIdDisplay" disabled>
+            </div>
+
+            <div class="field">
+                <div class="field-label">
+                    Summary
+                </div>
+                <textarea id="summary" placeholder="Auto-generated from page content..."></textarea>
+                <button class="primary-button analyze-button" id="regenerateSummaryBtn">
+                    <span>↻</span> Regenerate Summary
+                </button>
+            </div>
+
+            <button class="primary-button" id="importBtn">
+                <span id="btnText">Add to Notion</span>
+                <span>✈️</span>
+            </button>
+
+            <div id="status" class="status"></div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
