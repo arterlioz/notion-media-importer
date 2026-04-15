@@ -2,21 +2,17 @@
 
 A Chrome extension that saves articles, essays, podcasts, videos, and books to your Notion media tracker — one click from any webpage.
 
-Built with the [visioncoding](https://github.com/topics/visioncoding) philosophy: technology should work *with* your creative flow, not interrupt it.
-
 ---
 
 ## What it does
 
-You're reading something great online. You want to save it. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done.
+Whenever you come across something inspiring online - an essay, a youtube video, or a podcast,but you want to save it for later. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done. You can keep track of progress of eveyrthing easily all in one place, without getting distracted again everytime you dig through all your bookmarks or watch later playlist. 
 
 The extension will:
 - **Auto-detect** the media type (Essay, Article, Guide, Podcast, Video, Book) based on the URL
 - **Extract metadata** — title, author/channel/host — from the page
 - **Generate a summary** from the page's description or content
 - **Send everything to Notion** with the right properties filled in
-
-No AI APIs. No external services. Just clean JavaScript that reads the page and talks to Notion.
 
 ---
 
@@ -99,7 +95,7 @@ Alternatively, you can click **"Open as full page"** on the database, and the ID
 3. Paste your **Database ID** from Step 4
 4. Click **"Save & Continue"**
 
-You're done. Navigate to any article, video, or podcast and click the icon to try it out.
+That's it! Test it out with any article, video, or podcast by clicking the icon!
 
 ---
 
@@ -147,7 +143,7 @@ If you want to use your own Notion database instead of the template, make sure i
 
 The `Media Type` select options must match the emoji format exactly: `Essay 📄`, `Article 📑`, `Guide 📝`, `Podcast 🎙️`, `Video 🎥`, `Book 📖`, `Movie & Show 🎬`. If the emojis don't match, Notion will reject the import with a "property names don't match" error.
 
-The `Status`, `Rating`, and `Date Finished` properties are optional — the extension doesn't write to them, but they're useful for tracking what you've consumed.
+The `Status`, `Rating`, and `Date Finished` properties are optional — the extension doesn't populate any text in these fields, but they're useful for tracking what you've consumed.
 
 ---
 
@@ -187,22 +183,4 @@ notion-media-importer/
 
 ---
 
-## Running tests
-
-Open `tests/test-detection.html` in any browser. It runs 50+ test cases against the URL → media type detection logic and shows a pass/fail report. No dependencies needed.
-
----
-
-## Contributing
-
-If you add a new media type or detection rule, add matching test cases to `tests/test-detection.html`.
-
----
-
-## License
-
-MIT
-
----
-
-*Built with care for people who consume a lot of media and want to remember what they loved.*
+License @ MIT
