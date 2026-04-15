@@ -8,6 +8,8 @@ A Chrome extension that saves articles, essays, podcasts, videos, and books to y
 
 Whenever you come across something inspiring online - an essay, a youtube video, or a podcast,but you want to save it for later. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done. You can keep track of progress of eveyrthing easily all in one place, without getting distracted again everytime you dig through all your bookmarks or watch later playlist. 
 
+![extesnion popup](assets/screenshot-popup.png)
+
 The extension will:
 - **Auto-detect** the media type (Essay, Article, Guide, Podcast, Video, Book) based on the URL
 - **Extract metadata** — title, author/channel/host — from the page
@@ -19,6 +21,8 @@ The extension will:
 ## What your Notion tracker looks like
 
 The extension works with a specific Notion database structure. You can duplicate the template below to get started instantly.
+
+![tracker](assets/screenshot-tracker.png)
 
 **[→ Duplicate the Notion template](https://pattern-bubble-b1c.notion.site/template-0e37a73dfb8982b7b2ad8113edc60eba?source=copy_link)**
 
@@ -123,7 +127,7 @@ The extension reads the page in this order:
 2. **Structured elements** — HTML elements marked as excerpts, subtitles, or summaries
 3. **Article paragraphs** — first few content paragraphs if nothing else is available
 
-For **YouTube videos**, summaries are intentionally left blank unless the video has a meaningful custom description. Most YouTube `og:description` tags contain generic boilerplate, so the extension skips those.
+For **YouTube videos**, summaries are intentionally left blank since most YouTube `og:description` tags contain generic boilerplate, so the extension skips those.You can always add summaries manually before saving it to Notion.
 
 Summaries are capped at 500 characters and cut at sentence boundaries so they read naturally.
 

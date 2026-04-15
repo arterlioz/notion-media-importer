@@ -103,22 +103,9 @@ function pageExtractor(mediaType) {
             .trim();
     }
 
-    // ── VIDEO: skip summary unless there's a real description ──
+    // ── VIDEO: always leave summary blank ──
     if (mediaType.startsWith('Video')) {
-        const ogDesc = getMeta('og:description');
-        
-        // YouTube og:description is usually junk — check if it's real content
-        const youtubeJunk = [
-            /enjoy the videos and music/i,
-            /share your videos/i,
-            /subscribe/i,
-            /^\s*$/,
-        ];
-        
-        if (ogDesc && ogDesc.length > 60 && !youtubeJunk.some(p => p.test(ogDesc))) {
-            summary = cleanText(ogDesc);
-        }
-        // Otherwise: leave summary blank for videos (per design decision)
+        summary = '';
 
     // ── PODCAST: episode descriptions are usually good ──
     } else if (mediaType.startsWith('Podcast')) {
