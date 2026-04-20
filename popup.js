@@ -517,6 +517,38 @@ async function importToNotion() {
     try {
         const settings = await chrome.storage.sync.get(['notionToken', 'databaseId']);
         
+        // ── Check for duplicate URL ──
+        try {
+            const checkResponse = await fetch(`https://api.notion.com/v1/databases/${settings.databaseId}/query`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${settings.notionToken}`,
+                    'Content-Type': 'application/json',
+                    'Notion-Version': '2022-06-28'
+                },
+                body: JSON.stringify({
+                    filter: {
+                        property: 'Link',
+                        url: { equals: currentUrl }
+                    },
+                    page_size: 1
+                })
+            });
+            
+            const checkData = await checkResponse.json();
+            
+            if (checkData.results && checkData.results.length > 0) {
+                const existingTitle = checkData.results[0].properties?.Title?.title?.[0]?.plain_text || 'Untitled';
+                showStatus(`Already saved as "${existingTitle}"`, 'error');
+                btn.disabled = false;
+                btnText.textContent = 'Add to Notion';
+                return;
+            }
+        } catch (dupError) {
+            // If duplicate check fails, continue with import anyway
+            console.log('Duplicate check failed, proceeding:', dupError);
+        }
+        
         const payload = {
             parent: { database_id: settings.databaseId },
             properties: {
