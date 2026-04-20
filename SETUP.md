@@ -108,7 +108,7 @@ The ID is a 32-character hexadecimal string (letters and numbers only).
 
 1. **Download this repository**
    - Click the green "Code" button on GitHub → "Download ZIP"
-   - Or clone: `git clone https://github.com/YOUR_USERNAME/notion-media-importer.git`
+   - Or clone: `git clone https://github.com/arterlioz/notion-media-importer.git`
 
 2. **Unzip** the download if needed
 
