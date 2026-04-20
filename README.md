@@ -15,6 +15,7 @@ The extension will:
 - **Extract metadata** — title, author/channel/host — from the page
 - **Generate a summary** from the page's description or content
 - **Send everything to Notion** with the right properties filled in
+- **Duplicate check** — warns you if you've already saved the same URL
 
 ---
 
