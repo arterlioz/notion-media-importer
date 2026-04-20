@@ -6,9 +6,9 @@ A Chrome extension that saves articles, essays, podcasts, videos, and books to y
 
 ## What it does
 
-Whenever you come across something inspiring online - an essay, a youtube video, or a podcast,but you want to save it for later. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done. You can keep track of progress of eveyrthing easily all in one place, without getting distracted again everytime you dig through all your bookmarks or watch later playlist. 
+Whenever you come across something inspiring online - an essay, a youtube video, or a podcast,but you want to save it for later. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done. You can keep track of progress of everything easily all in one place, without getting distracted again everytime you dig through all your bookmarks or watch later playlist. 
 
-![extesnion popup](assets/screenshot-popup.png)
+![extension popup](assets/screenshot-popup.png)
 
 The extension will:
 - **Auto-detect** the media type (Essay, Article, Guide, Podcast, Video, Book) based on the URL
@@ -171,10 +171,11 @@ Click "↻ Regenerate Summary" to try again, or write your own. Sites behind pay
 notion-media-importer/
 ├── manifest.json          # Chrome extension config (Manifest V3)
 ├── popup.html             # Extension popup UI
-├── popup.js               # All logic: detection, extraction, Notion API
-├── icon16.png             # Toolbar icon
-├── icon48.png             # Extension page icon
-├── icon128.png            # Chrome Web Store icon
+├── popup.js  
+├── assets/             
+│   └── icon16.png             # Toolbar icon
+│   └── icon48.png             # Extension page icon
+│   └── icon128.png            # Chrome Web Store icon
 ├── book-55534E.svg        # Book icon asset
 ├── tests/
 │   └── test-detection.html  # Browser-based test suite for URL detection
