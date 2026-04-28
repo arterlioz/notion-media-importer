@@ -6,7 +6,7 @@ A Chrome extension that saves articles, essays, podcasts, videos, and books to y
 
 ## What it does
 
-Whenever you come across something inspiring online - an essay, a youtube video, or a podcast,but you want to save it for later. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done. You can keep track of progress of everything easily all in one place, without getting distracted again everytime you dig through all your bookmarks or watch later playlist. 
+Whenever you come across something fascinating online - an essay, a youtube video, or a podcast, but you don't have time for it now and you want to save it for later. Instead of copy-pasting titles, URLs, and authors into Notion manually, you click the extension icon and it's done. You can keep track of progress of everything easily all in one place, without getting distracted again everytime you dig through all your bookmarks or watch later playlist.
 
 ![extension popup](assets/screenshot-popup.png)
 
