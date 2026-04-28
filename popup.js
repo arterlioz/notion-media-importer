@@ -551,6 +551,7 @@ async function importToNotion() {
         
         const payload = {
             parent: { database_id: settings.databaseId },
+            icon: { type: "external", external: { url: "https://www.notion.so/icons/social-media-post_gray.svg" } },
             properties: {
                 "Title": {
                     title: [{ text: { content: title } }]
